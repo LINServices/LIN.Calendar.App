@@ -1,0 +1,128 @@
+﻿@page "/"
+@inject NavigationManager nav
+<PageTitle>Calendario</PageTitle>
+
+@if (!LIN.Access.Calendar.Session.IsOpen)
+{
+    <div class="flex h-dvh w-full items-center justify-center">
+        <Loader />
+    </div>
+    Task.Run(() => nav.NavigateTo("/login"));
+    return;
+}
+
+<div class="px-4 flex h-dvh w-full flex-grow flex-col items-center overflow-hidden lg:px-6">
+
+    <div class="gap-3 py-7 grid h-full w-full grid-cols-1 items-center justify-center overflow-y-auto dl:overflow-y-hidden dl:grid-cols-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-zinc-900 dark:[&::-webkit-scrollbar-thumb]:bg-zinc-800">
+
+        @* Calendario *@
+        <div class="flex w-full justify-center">
+            <div class="w-full self-center dl:max-w-lg">
+                <LIN.Calendar.Shared.Calendar Events="eventos" OnClick="Filter" Selected="Sel" />
+            </div>
+        </div>
+
+        @* Eventos *@
+        <div class="mt-4 h-full w-full dl:overflow-y-auto dl:mt-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-zinc-900 dark:[&::-webkit-scrollbar-thumb]:bg-zinc-800">
+
+            <div class="flex flex-col">
+                <label class="text-5xl font-bold dark:text-zinc-200">Mis Eventos</label>
+                <label class="mt-1 text-zinc-800 text-2xl dark:text-zinc-400">Eventos del @Sel.ToString("dd") de @Sel.ToString("MMMM") de @Sel.ToString("yyyy")</label>
+
+                <button @onclick="()=>NewEvent.Show(Sel)" type="button" class="me-2 mt-3 w-max rounded-full bg-current-500 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-current-600 focus:outline-none focus:ring-4 focus:ring-current-300 dark:bg-current-600 dark:hover:bg-current-700 dark:focus:ring-current-800">Agregar nuevo evento</button>
+
+            </div>
+
+            <div class="gap-3 py-5 flex w-full flex-col">
+
+                @if (renders.Count <= 0)
+                {
+                    <div class="">
+                        <div class="mt-3 border-gray-300 py-10 flex w-full items-center justify-center rounded-lg border-2 border-dashed dark:border-zinc-600">
+                            <label class="text-gray-400 dark:text-zinc-400">No tienes ningún evento para este dia</label>
+                        </div>
+                    </div>
+                }
+
+                @foreach (var e in renders)
+                {
+                   <LIN.Calendar.Shared.EventControl Event="e" OnClick="OnPress" />
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<LIN.Calendar.Shared.Drawers.DrawerPeople @ref="NewEvent" OnSuccess="OnSuccess"></LIN.Calendar.Shared.Drawers.DrawerPeople>
+<LIN.Calendar.Shared.Drawers.DrawerEvent @ref="DrawerEvent" OnDelete="OnDelete"/>
+
+@code {
+
+
+    LIN.Calendar.Shared.Drawers.DrawerPeople NewEvent;
+
+    LIN.Calendar.Shared.Drawers.DrawerEvent DrawerEvent;
+
+    public List<Types.Calendar.Models.EventModel> eventos { get; set; } = new();
+    public List<Types.Calendar.Models.EventModel> renders { get; set; } = new();
+
+
+
+    protected override void OnInitialized()
+    {
+        A();
+
+        base.OnInitialized();
+    }
+
+    async void A()
+    {
+        var token = LIN.Access.Calendar.Session.Instance.Token;
+        var x = await Access.Calendar.Controllers.Events.ReadAll(token);
+
+        eventos = x.Models;
+        Filter(DateTime.Now);
+        StateHasChanged();
+    }
+
+
+    DateTime Sel = DateTime.Now;
+
+
+    void Filter(DateTime? date = null)
+    {
+        Sel = date ?? Sel;
+        renders = eventos.Where(t => t.DateStart.Date == Sel.Date).ToList();
+        StateHasChanged();
+    }
+
+
+
+    void OnDelete(int id)
+    {
+        eventos.RemoveAll(t => t.Id == id);
+        renders.RemoveAll(t => t.Id == id);
+        StateHasChanged();
+    }
+
+
+    void OnSuccess(EventModel @event)
+    {
+
+        eventos.Add(@event);
+        Filter();
+        StateHasChanged();
+    }
+
+
+    void OnPress(EventModel @event)
+    {
+        DrawerEvent.Show(@event);
+        StateHasChanged();
+    }
+
+}
