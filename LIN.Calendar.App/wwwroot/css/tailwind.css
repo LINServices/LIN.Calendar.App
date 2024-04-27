@@ -778,10 +778,6 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.me-2 {
-  margin-inline-end: 0.5rem;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -836,6 +832,10 @@ video {
 
 .mt-7 {
   margin-top: 1.75rem;
+}
+
+.me-2 {
+  margin-inline-end: 0.5rem;
 }
 
 .box-border {
@@ -973,8 +973,21 @@ video {
   height: 100%;
 }
 
+.h-max {
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.h-44 {
+  height: 11rem;
+}
+
 .max-h-dvh {
   max-height: 100dvh;
+}
+
+.max-h-full {
+  max-height: 100%;
 }
 
 .min-h-dvh {
@@ -2229,6 +2242,11 @@ video {
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
 }
 
+.bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-20 {
   --tw-bg-opacity: 0.2;
 }
@@ -2423,11 +2441,6 @@ video {
   padding-right: 1rem;
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
 .px-\[-20px\] {
   padding-left: -20px;
   padding-right: -20px;
@@ -2443,24 +2456,24 @@ video {
   padding-bottom: 0.5rem;
 }
 
-.py-2\.5 {
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
-}
-
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
-.py-7 {
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .text-left {
@@ -2519,11 +2532,6 @@ video {
   vertical-align: super;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -2557,6 +2565,11 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .font-bold {
@@ -3255,6 +3268,18 @@ h1:focus {
   }
 }
 
+@media (hover: none) and (pointer: coarse) {
+  /* Estilos para la barra de desplazamiento bajo la clase HiddenScroll */
+
+  .HiddenScroll::-webkit-scrollbar {
+    width: 0px !important;
+  }
+}
+
+.HiddeBar::-webkit-scrollbar {
+  width: 0px !important;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -3590,43 +3615,38 @@ h1:focus {
 }
 
 @media (min-width: 910px) {
-  .dl\:mt-0 {
-    margin-top: 0px;
-  }
-
   .dl\:block {
     display: block;
+  }
+
+  .dl\:h-dvh {
+    height: 100dvh;
+  }
+
+  .dl\:h-full {
+    height: 100%;
   }
 
   .dl\:w-full {
     width: 100%;
   }
 
-  .dl\:max-w-lg {
-    max-width: 32rem;
-  }
-
   .dl\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .dl\:overflow-y-auto {
-    overflow-y: auto;
-  }
-
   .dl\:overflow-y-hidden {
     overflow-y: hidden;
+  }
+
+  .dl\:overflow-y-scroll {
+    overflow-y: scroll;
   }
 }
 
 @media (min-width: 1024px) {
   .lg\:max-w-lg {
     max-width: 32rem;
-  }
-
-  .lg\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 }
 
@@ -3834,40 +3854,4 @@ h1:focus {
       paint-order: markers;
     }
   }
-}
-
-.\[\&\:\:-webkit-scrollbar-thumb\]\:rounded-full::-webkit-scrollbar-thumb {
-  border-radius: 9999px;
-}
-
-.\[\&\:\:-webkit-scrollbar-thumb\]\:bg-gray-300::-webkit-scrollbar-thumb {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-}
-
-@media (prefers-color-scheme: dark) {
-  .dark\:\[\&\:\:-webkit-scrollbar-thumb\]\:bg-zinc-800::-webkit-scrollbar-thumb {
-    --tw-bg-opacity: 1;
-    background-color: rgb(39 39 42 / var(--tw-bg-opacity));
-  }
-}
-
-.\[\&\:\:-webkit-scrollbar-track\]\:rounded-full::-webkit-scrollbar-track {
-  border-radius: 9999px;
-}
-
-.\[\&\:\:-webkit-scrollbar-track\]\:bg-gray-100::-webkit-scrollbar-track {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
-@media (prefers-color-scheme: dark) {
-  .dark\:\[\&\:\:-webkit-scrollbar-track\]\:bg-zinc-900::-webkit-scrollbar-track {
-    --tw-bg-opacity: 1;
-    background-color: rgb(24 24 27 / var(--tw-bg-opacity));
-  }
-}
-
-.\[\&\:\:-webkit-scrollbar\]\:w-2::-webkit-scrollbar {
-  width: 0.5rem;
 }

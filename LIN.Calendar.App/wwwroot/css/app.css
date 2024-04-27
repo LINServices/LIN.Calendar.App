@@ -102,3 +102,15 @@ h1:focus {
         padding-left: env(safe-area-inset-left);
     }
 }
+
+
+@media (hover: none) and (pointer: coarse) {
+    /* Estilos para la barra de desplazamiento bajo la clase HiddenScroll */
+    .HiddenScroll::-webkit-scrollbar {
+        width: 0px !important;
+    }
+}
+
+.HiddeBar::-webkit-scrollbar {
+    width: 0px !important;
+}
