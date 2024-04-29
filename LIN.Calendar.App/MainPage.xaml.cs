@@ -1,15 +1,21 @@
-﻿namespace LIN.Calendar.App
-{
-    public partial class MainPage : ContentPage
-    {
-        public MainPage()
-        {
-            InitializeComponent();
+﻿namespace LIN.Calendar.App;
 
-            Application.Current.RequestedThemeChanged += (s, a) =>
-            {
-                MauiProgram.Aa();
-            };
-        }
+public partial class MainPage : ContentPage
+{
+    public MainPage()
+    {
+        InitializeComponent();
+
+        Application.Current.RequestedThemeChanged += (s, a) =>
+        {
+            MauiProgram.Aa();
+        };
+    }
+
+
+    protected override void OnAppearing()
+    {
+        MauiProgram.Aa();
+        base.OnAppearing();
     }
 }
