@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LIN.Calendar.App", "LIN.Calendar.App\LIN.Calendar.App.csproj", "{C45A9F84-9B0D-4B39-8C6D-027ABFDA158B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Calendar.App", "LIN.Calendar.App\LIN.Calendar.App.csproj", "{C45A9F84-9B0D-4B39-8C6D-027ABFDA158B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Types", "..\..\Tipos\LIN.Types\LIN.Types.csproj", "{A6C68809-2685-49ED-B12C-CB70137569A4}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Access.Auth", "..\..\AccesoAPI\LIN.Access.Auth\LIN.Access.Auth.csproj", "{E57980A3-40A5-4B8A-BD0B-D286D21F69A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.Calendar.Shared", "..\..\Components\LIN.Calendar.Shared\LIN.Calendar.Shared.csproj", "{CC646206-DD25-4777-8948-7DF9A54404C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LIN.LocalDataBase", "..\LIN\LIN.LocalDataBase\LIN.LocalDataBase.csproj", "{BD6F2FD9-5F1E-4BB6-A27C-E852451E924A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{CC646206-DD25-4777-8948-7DF9A54404C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC646206-DD25-4777-8948-7DF9A54404C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC646206-DD25-4777-8948-7DF9A54404C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD6F2FD9-5F1E-4BB6-A27C-E852451E924A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD6F2FD9-5F1E-4BB6-A27C-E852451E924A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD6F2FD9-5F1E-4BB6-A27C-E852451E924A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD6F2FD9-5F1E-4BB6-A27C-E852451E924A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
