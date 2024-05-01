@@ -15,7 +15,7 @@
 <div class="w-full px-4 py-2">
 
     <div class="flex items-center gap-2">
-        <PopSession />
+        <PopSession  OnClick="Close"/>
 
         <div class="flex flex-col">
             <label class="text-sm font-bold text-zinc-800 dark:text-zinc-200">@LIN.Access.Calendar.Session.Instance.Account?.Name</label>
@@ -182,4 +182,14 @@
         StateHasChanged();
     }
 
+
+    async void Close()
+    {
+        var db = new LocalDataBase.Data.UserDB();
+        await db.DeleteUsers();
+
+        LIN.Access.Calendar.Session.CloseSession();
+
+        nav.NavigateTo("/login", true);
+    }
 }
