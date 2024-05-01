@@ -401,3 +401,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /LIN.Calendar/LIN.Calendar/wwwroot/css/Tailwind.css
+/LIN.Calendar.App/wwwroot/css/tailwind.css
