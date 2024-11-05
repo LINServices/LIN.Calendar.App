@@ -1,6 +1,7 @@
 ﻿#if ANDROID
 using Android.Views;
 #endif
+using LIN.Access.Auth;
 using Microsoft.Extensions.Logging;
 
 namespace LIN.Calendar.App
@@ -18,14 +19,12 @@ namespace LIN.Calendar.App
                 });
 
             builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddAuthenticationService();
 
 #if DEBUG
     		builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
-
-
-            LIN.Access.Auth.Build.Init();
             LIN.Access.Calendar.Build.Init();
 
             return builder.Build();
