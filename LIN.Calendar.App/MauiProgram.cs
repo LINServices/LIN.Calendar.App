@@ -2,6 +2,7 @@
 using Android.Views;
 #endif
 using LIN.Access.Auth;
+using LIN.Access.Calendar;
 using Microsoft.Extensions.Logging;
 
 namespace LIN.Calendar.App
@@ -25,7 +26,8 @@ namespace LIN.Calendar.App
     		builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
-            LIN.Access.Calendar.Build.Init();
+
+            builder.Services.AddCalendarService();
 
             return builder.Build();
         }
