@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["../**/*{html,razor,js,cs}", "D:/LIN Services/Components/LIN.Calendar.Shared/**/*{html,razor,js,cs}"],
+    content: ["../**/*{html,razor,js,cs}", "D:/LIN/LIN Services/Components/LIN.Calendar.Shared/**/*{html,razor,js,cs}"],
     theme: {
         screens: {
             'sm': '640px',
@@ -14,17 +14,17 @@ module.exports = {
             colors: {
 
                 'current': {
-                    '50': '#f5f3ff',
-                    '100': '#ede9fe',
-                    '200': '#ddd6fe',
-                    '300': '#c4b5fd',
-                    '400': '#a78bfa',
-                    '500': '#8b5cf6',
-                    '600': '#7c3aed',
-                    '700': '#6d28d9',
-                    '800': '#5b21b6',
-                    '900': '#4c1d95',
-                    '950': '#2e1065'
+                    '50': '#f4f6fb',
+                    '100': '#e7edf7',
+                    '200': '#cad8ed',
+                    '300': '#9bb8de',
+                    '400': '#6692ca',
+                    '500': '#4275b5',
+                    '600': '#315c98',
+                    '700': '#294a7b',
+                    '800': '#254067',
+                    '900': '#233757',
+                    '950': '#17233a'
                 }
             }
         },
